@@ -1,0 +1,88 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+    </h:head>
+    <h:body role="document">
+
+        <ui:composition template="../template.xhtml">
+
+            <ui:define name="top"></ui:define>
+
+            <ui:define name="left">
+                <h:form>
+                    <p:growl autoUpdate="true"/><br></br>
+                    <p:spacer></p:spacer>
+
+                    <p:panelMenu style="width:340px" >
+                        <p:submenu label="Meni" >
+                            <p:menuitem value="Izloguj se" action="/naslovna/naslovnaStrana.xhtml?faces-redirect=true" icon="ui-icon-back" />
+
+                        </p:submenu>
+
+
+                    </p:panelMenu>
+                </h:form>
+            </ui:define>
+            <ui:define name="content">
+
+                <div class="container">
+                    <div class="row">
+                        <h1><h:outputText value="Radnik u avio-kompaniji"/></h1><hr/>
+
+
+                        <p:spacer height="35" />
+
+                        <p:panel header="Izbor">
+                            <p:messages autoUpdate="true"/>
+
+                            <h:panelGrid id="grid" columns="4" cellpadding="5">
+                                <h:form>
+                                    <p:growl id="growl" life="2000" />
+
+                                    <p:commandLink id="ajax4" style="font-weight:bold"  update="growl"  ajax="false" action="#{registracijaBean.aktuelniR()}">
+                                        <h:outputText value="Pregled aktuelnih letova" />
+                                    </p:commandLink>
+                                    <br/><br/>
+
+                                    <p:commandLink id="ajax1" style="font-weight:bold" update="growl"  ajax="false" action="addNewAvion.xhtml"  >
+                                        <h:outputText value="Dodajte novi avion" />
+                                    </p:commandLink>
+                                    <br/><br/>
+
+                                    <p:commandLink id="ajax2"  style="font-weight:bold"  update="growl" ajax="false" action="rentAvion.xhtml">
+                                        <h:outputText value="Iznajmite avion" />
+                                    </p:commandLink>
+                                    <br/><br/>
+
+                                    <p:commandLink id="ajax3" style="font-weight:bold" update="growl" ajax="false" action="decision.xhtml">
+                                        <h:outputText value="Prihvati/odbij ponudu" />
+                                    </p:commandLink><br/><br/>
+                                    <br/><br/>
+
+
+
+
+
+                                </h:form>
+
+                            </h:panelGrid>
+                        </p:panel>
+
+
+
+                    </div>
+                </div>
+
+
+
+            </ui:define>
+        </ui:composition>
+    </h:body>
+</html>
+
+

@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Aug 21, 2017 1:07:44 AM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="pojo.TerminalGejt" table="TerminalGejt" catalog="let1" optimistic-lock="version">
+        <id name="id" type="java.lang.Integer">
+            <column name="ID" />
+            <generator class="identity" />
+        </id>
+        <property name="terminal" type="string">
+            <column name="Terminal" length="45" />
+        </property>
+        <property name="gejt" type="string">
+            <column name="Gejt" length="45" />
+        </property>
+        <property name="airport" type="string">
+            <column name="Airport" length="45" />
+        </property>
+    </class>
+</hibernate-mapping>

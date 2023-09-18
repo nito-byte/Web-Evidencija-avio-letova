@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC "-//Hibernate/Hibernate Configuration DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+  <session-factory>
+    <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
+    <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
+    <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/let1?zeroDateTimeBehavior=convertToNull</property>
+    <property name="hibernate.connection.username">root</property>
+    <property name="hibernate.connection.password">12345678</property>
+    <property name="hibernate.show_sql">true</property>
+    <property name="hibernate.current_session_context_class">thread</property>
+    <mapping resource="pojo/Flight.hbm.xml"/>
+    <mapping resource="pojo/Airline.hbm.xml"/>
+    <mapping resource="pojo/Airport.hbm.xml"/>
+    <mapping resource="pojo/Imagen.hbm.xml"/>
+    <mapping resource="pojo/TerminalGejt.hbm.xml"/>
+    <mapping resource="pojo/Licenca.hbm.xml"/>
+    <mapping resource="pojo/User.hbm.xml"/>
+    <mapping resource="pojo/Airplane.hbm.xml"/>
+    <mapping resource="pojo/Tip.hbm.xml"/>
+    <mapping resource="pojo/Proizvodjac.hbm.xml"/>
+    <mapping resource="pojo/Posada.hbm.xml"/>
+    <mapping resource="pojo/Rezervacija.hbm.xml"/>
+    <mapping resource="pojo/RadarCentar.hbm.xml"/>
+    <mapping resource="pojo/Azuriranje.hbm.xml"/>
+  </session-factory>
+</hibernate-configuration>

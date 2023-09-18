@@ -1,0 +1,106 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head> </h:head>
+
+
+    <h:body role="document">
+        <ui:composition template="../template.xhtml">
+
+            <ui:define name="top"></ui:define>
+
+            <ui:define name="left">
+                <h:form>
+                    <p:growl autoUpdate="true"/><br></br>
+                    <p:spacer></p:spacer>
+
+                    <p:panelMenu style="width:340px" >
+                        <p:submenu label="Meni" >
+                            <p:menuitem value="Pocetna strana" action="linkovi.xhtml?faces-redirect=true" icon="ui-icon-back" />
+                            <p:menuitem value="Izloguj se" action="/naslovna/naslovnaStrana.xhtml?faces-redirect=true" icon="ui-icon-home" />
+
+                        </p:submenu>
+
+
+                    </p:panelMenu>
+                </h:form>
+            </ui:define>
+
+            
+
+
+
+            <ui:define name="content">
+                <div class="container" >
+                    <div class="row" >
+                        <h1><h:outputText value="Stujardesa"/></h1><hr/>
+
+
+                        
+                        <h:form  id="form">
+                            <p:panel header="Buduci letovi" >
+                                <p:messages autoUpdate="true"/>
+
+
+
+                                <p:dataList value="#{registracijaBean.f}" var="car" type="unordered" itemType="none" paginator="true" rows="10" styleClass="paginated" >
+                                    <f:facet name="header">
+                                        Arhiva letova
+                                    </f:facet>
+                                    <p:commandLink update=":form:carDetail" oncomplete="PF('carDialog').show()" title="View Detail" styleClass="ui-icon ui-icon-search" style="float:left;margin-right:10px">
+                                        <f:setPropertyActionListener value="#{car}" target="#{registracijaBean.selectedFlight}" />
+                                        <h:outputText value="#{car.airportFrom}, #{car.airportTo}" />
+                                    </p:commandLink>
+                                    <h:outputText value="Broj leta:  #{car.brojLeta}" style="display:inline-block"/>
+                                </p:dataList>
+
+                                <p:dialog header="Car Info" widgetVar="carDialog" modal="true" showEffect="blind" hideEffect="explode" resizable="false">
+                                    <p:outputPanel id="carDetail" style="text-align:center;">
+                                        <p:panelGrid  columns="2" rendered="#{not empty registracijaBean.selectedFlight}" columnClasses="label,value">
+                                            <f:facet name="header">
+                                                <p:graphicImage name="demo/images/car/#{registracijaBean.selectedFlight.brojLeta}-big.gif"/> 
+                                            </f:facet>
+
+                                            <h:outputText value="Airplane:" />
+                                            <h:outputText value="#{registracijaBean.selectedFlight.airplane}" />
+
+                                            <h:outputText value="Airport from:" />
+                                            <h:outputText value="#{registracijaBean.selectedFlight.airportFrom}" />
+
+                                            <h:outputText value="Airport to:" />
+                                            <h:outputText value="#{registracijaBean.selectedFlight.airportTo}" style="color:#{dataListView.selectedCar.color}"/>
+
+                                            <h:outputText value="Time:" />
+                                            <h:outputText value="#{registracijaBean.selectedFlight.time}" />
+
+                                            <h:outputText value="Start:" />
+                                            <h:outputText value="#{registracijaBean.selectedFlight.start}" />
+
+                                            <h:outputText value="Status:" />
+                                            <h:outputText value="#{registracijaBean.selectedFlight.status}" />
+
+                                            <h:outputText value="Landing time:" />
+                                            <h:outputText value="#{registracijaBean.selectedFlight.vremeSletanja}" />
+
+                                        </p:panelGrid>
+                                    </p:outputPanel>
+                                </p:dialog>
+                            </p:panel>
+                        
+
+                        </h:form>
+
+
+
+                    </div>
+                </div>
+            </ui:define>
+        </ui:composition>
+    </h:body>
+</html>
+
+

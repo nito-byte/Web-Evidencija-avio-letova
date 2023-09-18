@@ -1,0 +1,112 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:o="http://omnifaces.org/ui">
+    <h:head>
+    </h:head>
+    <h:body role="document">
+        <ui:composition template="../template.xhtml">
+
+            <ui:define name="top"></ui:define>
+
+            <ui:define name="left">
+                <h:form>
+                    <p:growl autoUpdate="true"/><br></br>
+                    <p:spacer></p:spacer>
+
+                    <p:panelMenu style="width:340px" >
+                        <p:submenu label="Meni" >
+                            <p:menuitem value="Pocetna strana" action="/naslovna/naslovnaStrana.xhtml?faces-redirect=true" icon="ui-icon-back" />
+
+                        </p:submenu>
+
+
+                    </p:panelMenu>
+                </h:form>
+            </ui:define>
+
+
+
+            <ui:define name="content">
+                <div class="container" >
+                    <div class="row">
+                        <h1><h:outputText value="Izbor posade"/></h1><hr/>
+
+
+                        <h:form >
+                            <p:panel header="Izaberite posadu" >
+                                <p:messages autoUpdate="true"/>
+
+                                <h:panelGrid id="grid" columns="2"  cellpadding="2">
+
+
+                                    <h:outputLabel for="brojLeta" value="Broj leta: &nbsp;&nbsp;"/>
+                                    <p:outputLabel  value="#{FlightBean.brojLeta}" id="brojLeta" /> 
+                                    <h:message for="brojLeta" style="color: crimson" id="brojLetaMessage"/>
+                                    <br/>
+                                    <input type="hidden" name="hidden1" value="#{FlightBean.brojLeta}" />
+
+
+                                    <h:outputLabel for="kompanija" value="Avio kompanija: &nbsp;&nbsp;"/>
+                                    <p:outputLabel  value="#{FlightBean.avioKompanija}" id="kompanija" /> 
+                                    <h:message for="kompanija" style="color: crimson" id="kompanijaMessage"/>
+                                    <br/>
+                                    <input type="hidden" name="hidden2" value="#{FlightBean.avioKompanija}" />
+
+
+
+                                    <h:outputLabel for="menu" value="Piloti:" />
+                                    <p:selectCheckboxMenu id="menu"  value="#{PosadaListBean.piloti}" label="Izaberite&nbsp;&nbsp;"
+                                                          filter="true" filterMatchMode="startsWith" panelStyle="width:300px">
+                                        <f:selectItems value="#{PosadaListBean.lst1}" var="tutorial" 
+                                                       itemValue="#{tutorial.username}" itemLabel="#{tutorial.name} #{tutorial.surname}"/>
+                                        <f:validator validatorId="maxCheckboxMenuValidator" />                       
+                                        <f:attribute name="maxLimit" value="2" />
+                                    </p:selectCheckboxMenu>
+
+                                    <h:outputLabel for="menu1" value="Stujardese:" />
+                                    <p:selectCheckboxMenu id="menu1"  value="#{PosadaListBean.stujardese}" label="Izaberite&nbsp;&nbsp;"
+                                                          filter="true" filterMatchMode="startsWith" panelStyle="width:300px">
+                                        <f:selectItems value="#{PosadaListBean.lst}" var="tutorial1" 
+                                                       itemValue="#{tutorial1.username}" itemLabel="#{tutorial1.name} #{tutorial1.surname}"/>
+                                        <f:validator validatorId="limitCheckboxMenuValidator" />                       
+                                        <f:attribute name="minLimit" value="3" />
+                                        <f:attribute name="maxLimit" value="5" />
+                                    </p:selectCheckboxMenu>
+
+                                    <p:commandButton value="Submit" update="displayItems" oncomplete="PF('itemDialog').show()" style="margin-top:10px;" />
+                                    <p:commandButton value="Potvrdi" update="grid" ajax="false"   actionListener="#{PosadaListBean.action()}" />
+
+                                    <p:dialog header="Selected Items" modal="true" showEffect="fade" hideEffect="fade" widgetVar="itemDialog" width="250">
+                                        <p:outputPanel id="displayItems">
+                                            <p:dataList value="#{PosadaListBean.piloti}" var="city" emptyMessage="No cities selected" style="margin-bottom: 10px;">
+                                                <f:facet name="header">
+                                                    Basic
+                                                </f:facet>
+                                                #{city}
+                                            </p:dataList>
+
+                                            <p:dataList value="#{PosadaListBean.stujardese}" var="stujart" emptyMessage="No cities selected" style="margin-bottom: 10px;">
+                                                <f:facet name="header1">
+                                                    Basic
+                                                </f:facet>
+                                                #{stujart}
+                                            </p:dataList>
+                                        </p:outputPanel>
+                                    </p:dialog>
+
+
+                                </h:panelGrid><br/>
+                            </p:panel>
+                        </h:form>
+
+                    </div>
+                </div>
+            </ui:define>
+        </ui:composition>
+    </h:body>
+</html>

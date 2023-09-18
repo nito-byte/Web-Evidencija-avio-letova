@@ -1,0 +1,217 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+    </h:head>
+    <h:body role="document">
+        <ui:composition template="../template.xhtml">
+
+            <ui:define name="top"></ui:define>
+
+            <ui:define name="left">
+                <h:form>
+                    <p:growl autoUpdate="true"/><br></br>
+                    <p:spacer></p:spacer>
+
+                    <p:panelMenu style="width:340px" >
+                        <p:submenu label="Meni" >
+                            <p:menuitem value="Pocetna strana" action="linkovi.xhtml?faces-redirect=true" icon="ui-icon-back" />
+                            <p:menuitem value="Izloguj se" action="/naslovnaStrana.xhtml?faces-redirect=true" icon="ui-icon-home" />
+
+                        </p:submenu>
+
+
+                    </p:panelMenu>
+                </h:form>
+            </ui:define>
+
+
+
+            <ui:define name="content">    <div class="container">
+                    <div class="row">
+                        <h1><h:outputText value="Administrator"/></h1><hr/>
+
+                        <p:spacer height="35" />
+                        <h:form >
+                            <p:panel header="Dodaj novi let">
+                                <p:messages autoUpdate="true"/>
+
+                                <h:panelGrid id="grid" columns="2" cellpadding="1">
+
+
+
+                                    <h:outputLabel for="brojLeta" value="Broj leta"/>
+                                    <p:inputText  value="#{FlightBean.brojLeta}" id="brojLeta" label="brojLeta" required="true" placeholder="Unesite" requiredMessage="Obavezno je uneti broj leta"   immediate="true" >
+                                    </p:inputText>
+                                    <h:message for="brojLeta" style="color: crimson" id="brojLetaMessage"/>
+                                    <br/>
+
+
+
+
+
+                                    <h:outputLabel for="airportCode1" value="Aerodrom polaziste"/>
+                                    <p:selectOneMenu id="AirportFrom" value="#{FlightBean.airportFrom}"
+                                                     style="width:150px">
+                                        <f:selectItem itemLabel="Izaberite:" itemValue=""
+                                                      noSelectionOption="true" />
+                                        <f:selectItems value="#{AirportListBean.lst}" var="item"
+                                                       itemValue="#{item.name}" itemLabel="#{item.name}" />
+                                    </p:selectOneMenu>
+                                    <p:message for="AirportFrom" display="icon" />
+                                    <br/>
+
+
+                                    <h:outputLabel for="grad1" value="Grad (polaziste):"/>
+                                    <p:inputText  value="#{FlightBean.grad1}" id="grad1" label="grad1" required="true" placeholder="Unesite" requiredMessage="Obavezno je uneti grad"   immediate="true" >
+                                    </p:inputText>
+                                    <h:message for="grad1" style="color: crimson" id="grad1Message"/>
+                                    <br/>
+
+
+
+
+
+
+                                    <h:outputLabel for="airportCode2" value="Aerodrom odrediste"/>
+                                    <p:selectOneMenu id="AirportTo" value="#{FlightBean.airportTo}"
+                                                     style="width:150px">
+                                        <f:selectItem itemLabel="Izaberite:" itemValue=""
+                                                      noSelectionOption="true" />
+                                        <f:selectItems value="#{AirportListBean.lst}" var="item"
+                                                       itemValue="#{item.name}" itemLabel="#{item.name}" />
+                                    </p:selectOneMenu>
+                                    <p:message for="AirportTo" display="icon" />
+                                    <br/>
+
+
+                                    <h:outputLabel for="grad2" value="Grad (odrediste):"/>
+                                    <p:inputText  value="#{FlightBean.grad2}" id="grad2" label="grad2" required="true" placeholder="Unesite" requiredMessage="Obavezno je uneti grad"   immediate="true" >
+                                    </p:inputText>
+                                    <h:message for="grad2" style="color: crimson" id="grad2Message"/>
+                                    <br/>
+
+
+
+
+                                    <h:outputLabel for="avion" value="Identifikator aviona"/>
+                                    <p:selectOneMenu id="modelAviona" value="#{FlightBean.model}"
+                                                     style="width:150px" >
+                                        <f:selectItem itemLabel="Izaberite:" itemValue=""
+                                                      noSelectionOption="true" />
+                                        <f:selectItems value="#{AvionListBean.lst}" var="item"
+                                                       itemValue="#{item.model}" itemLabel="#{item.model}" />
+                                    </p:selectOneMenu>
+
+                                    <p:message for="modelAviona" display="icon" />
+                                    <br/><br/>
+
+
+
+
+                                    <h:outputLabel for="flightStart" value="Datum i vreme poletanja" />
+                                    <p:calendar id="flightStart" value="#{FlightBean.start}" pattern="MM/dd/yyyy HH:mm:ss" pages="2" mindate="#{FlightBean.now}" placeholder="Unesite" required="true" requiredMessage="Obavezno polje">
+                                        <!--<f:ajax event="blur" render="flightStartMessage"/>-->
+
+                                        <!--<f:ajax event="click" render="@form" listener="#{FlightBean.calculatePlaniranoVreme()}"/>-->
+                                    </p:calendar>
+                                    <h:message for="flightStart" id="flightStartMessage" style="color: crimson"/>
+
+                                    <p:spacer/>
+                                    <p:spacer/>
+
+
+
+
+
+
+                                    <p:growl id="msgs" showDetail="true" />
+                                    <p:outputLabel  value="Standardna duzina trajanja" />
+
+                                    <p:calendar id="time" value="#{FlightBean.time}" pattern="HH:mm" timeOnly="true" placeholder="Unesite"  />
+
+                                        <!--<f:ajax event="click" render="@form" listener="#{FlightBean.calculatePlaniranoVreme()}"/>-->
+                                    <br/><br/>
+                                    <p:spacer/>
+
+
+                                    <h:outputText value="Carter let: "  style="font-weight:bold"/>
+                                    <p:selectBooleanCheckbox value="#{FlightBean.carter}"   label="Checkbox" >
+
+                                    </p:selectBooleanCheckbox>  
+                                    <p:spacer/><br/>
+
+
+
+
+                                    <!--                                    <h:outputText value="Planirano vreme"/>
+                                                                        <h:panelGroup layout="block" id="total_price" style="padding-top: 3px;" styleClass="text">
+                                                                            <h:outputText value="#{FlightBean.calculatePlaniranoVreme()}"/>
+                                                                        </h:panelGroup>-->
+
+
+                                    <p:outputLabel for="Airline" value="Airline : " />
+                                    <p:selectOneMenu id="Airline" value="#{FlightBean.avioKompanija}"
+                                                     style="width:150px">
+                                        <f:selectItem itemLabel="Izaberite:" itemValue=""
+                                                      noSelectionOption="true" />
+                                        <f:selectItems value="#{AirlineList.lst}" var="item"
+                                                       itemValue="#{item.name}" itemLabel="#{item.name}" />
+                                        <input type="hidden" name="hidd1" value="#{FlightBean.avioKompanija}" />
+                                    </p:selectOneMenu>
+                                    <p:message for="Airline" display="icon" />
+                                    <br/>
+
+
+                                    
+                                    <p:outputLabel for="Airline1" value="Airline (od koje iznajmljujete): " />
+                                    <p:selectOneMenu id="Airline1" value="#{FlightBean.avioKompanija1}"
+                                                     style="width:150px">
+                                        <f:selectItem itemLabel="Izaberite:" itemValue=""
+                                                      noSelectionOption="true" />
+                                        <f:selectItems value="#{AirlineList.lst}" var="item"
+                                                       itemValue="#{item.name}" itemLabel="#{item.name}" />
+                                        <input type="hidden" name="hidd2" value="#{FlightBean.avioKompanija1}" />
+                                    </p:selectOneMenu>
+                                    <p:message for="Airline1" display="icon" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                    <p:spacer height="35" />
+                                    <h:panelGrid columns="2">
+                                        <p:commandButton value="Dodaj"  update="msgs" icon="ui-icon-check"  action="#{FlightBean.cadastrar()}"  ajax="false">
+                                        </p:commandButton>
+
+                                    </h:panelGrid>
+                                </h:panelGrid>
+                            </p:panel>
+
+                        </h:form>
+
+
+                    </div>
+                </div>
+            </ui:define>
+        </ui:composition>
+    </h:body>
+
+
+
+
+
+</html>
+

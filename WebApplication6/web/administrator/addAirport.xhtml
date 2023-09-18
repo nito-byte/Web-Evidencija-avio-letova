@@ -1,0 +1,141 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+    </h:head>
+    <h:body role="document">
+        <ui:composition template="../template.xhtml">
+
+            <ui:define name="top"></ui:define>
+
+            <ui:define name="left">
+                <h:form>
+                    <p:growl autoUpdate="true"/><br></br>
+                    <p:spacer></p:spacer>
+
+                    <p:panelMenu style="width:340px" >
+                        <p:submenu label="Meni" >
+                            <p:menuitem value="Pocetna strana" action="linkovi.xhtml?faces-redirect=true" icon="ui-icon-back" />
+                            <p:menuitem value="Izloguj se" action="/naslovna/naslovnaStrana.xhtml?faces-redirect=true" icon="ui-icon-home" ajax="false" />
+
+                        </p:submenu>
+
+
+                    </p:panelMenu>
+                </h:form>
+            </ui:define>
+
+
+
+            <ui:define name="content">    <div class="container">
+                    <div class="row">
+                        <h1><h:outputText value="Administrator"/></h1><hr/>
+
+                        <p:spacer height="35" />
+                        <h:form id="airplaneForm">
+                            <p:panel header="Dodaj novi aerodrom">
+                                <p:messages autoUpdate="true"/>
+
+                                <h:panelGrid id="grid" columns="4" cellpadding="5">
+
+
+                                    <h:outputLabel for="airportCode" value="IATA"/>
+                                    <p:inputText  value="#{addAirportBean.code}" id="airportCode" label="airportCode" required="true" placeholder="" requiredMessage="Obavezno je uneti kod" validatorMessage="Niste uneli dobar kod" size="3" immediate="true" >
+                                        <f:validateRegex pattern="^([A-Z]{3})$"/>
+                                        <f:ajax event="blur" render="airportCodeMessage"/>
+                                    </p:inputText>
+                                    <h:message for="airportCode" style="color: crimson" id="airportCodeMessage"/>
+                                    <br/>
+
+                                    <h:outputLabel for="airportName" value="Naziv aerodroma"/>
+                                    <p:inputText  value="#{addAirportBean.name}" id="airportName" label="airportName" required="true" placeholder="Unesite naziv aerodroma" requiredMessage="Naziv aerodroma je obavezan" validatorMessage="Polje ima izmedju 3 i 35 karaktera" size="35" immediate="true" >
+                                        <f:validateLength minimum="3" maximum="35"/>
+                                        <f:ajax event="blur" render="airportNameMessage"/>
+                                    </p:inputText>
+                                    <h:message for="airportName" style="color: crimson" id="airportNameMessage"/>
+                                    <br/>
+
+                                    <h:outputLabel for="airportCountry" value="Naziv zemlje"/>
+                                    <p:inputText  value="#{addAirportBean.country}" id="airportCountry" label="airportCountry" required="true" placeholder="Unesite naziv zemlje" requiredMessage="Naziv zemlje je obavezan" validatorMessage="Polje ima izmedju 3 i 35 karaktera" size="35" immediate="true" >
+                                        <f:validateLength minimum="3" maximum="35"/>
+                                        <f:ajax event="blur" render="airportCountryMessage"/>
+                                    </p:inputText>
+                                    <h:message for="airportCountry" style="color: crimson"/>
+                                    <br/>
+
+
+                                    <h:outputLabel for="airportCity" value="Naziv grada"/>
+                                    <p:inputText  value="#{addAirportBean.city}" id="airportCity" label="airportCity" required="true" placeholder="Unesite naziv grada" requiredMessage="Naziv grada je obavezan" validatorMessage="Polje ima izmedju 3 i 35 karaktera" size="35" immediate="true" >
+                                        <f:validateLength minimum="3" maximum="35"/>
+                                        <f:ajax event="blur" render="airportCityMessage"/>
+                                    </p:inputText>
+                                    <h:message for="airportCity" style="color: crimson" id="airportCityMessage" />
+                                    <br/>
+
+                                    <h:outputLabel for="airportPista" value="Broj pisti"/>
+                                    <p:inputText  value="#{addAirportBean.brojPisti}" id="airportPista" label="airportPista" required="true" placeholder="Unesite broj pisti" requiredMessage="Broj pisti je obavezan" validatorMessage="Greska" size="35" immediate="true" >
+                                        <f:convertNumber type="number" integerOnly="true"/>
+                                        <f:ajax event="blur" render="airportPistaMessage"/>
+                                    </p:inputText>
+                                    <h:message for="airportPista" style="color: crimson" id="airportPistaMessage" />
+
+                                    <br/>
+
+
+
+
+
+                                </h:panelGrid>
+                                <p:spacer height="35" />
+                                <h:panelGrid columns="2">
+                                    <p:commandButton value="Dodaj" update="grid" icon="ui-icon-check" validateClient="true" style="margin-right:10px" action="#{addAirportBean.cadastrar}"  ajax="false" >  
+                                        <f:param name="code"></f:param>
+                                    </p:commandButton>
+
+
+
+
+
+                                    <br/><br/>
+
+
+
+
+
+
+
+
+                                </h:panelGrid>
+
+                            </p:panel>
+                        </h:form>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                    </div>
+                </div>
+            </ui:define>
+        </ui:composition>
+    </h:body>
+
+
+
+
+</html>
+
+

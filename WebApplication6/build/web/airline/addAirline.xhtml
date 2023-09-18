@@ -1,0 +1,133 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+    </h:head>
+
+    <h:body role="document">
+        <ui:composition template="../template.xhtml">
+
+            <ui:define name="top"></ui:define>
+
+            <ui:define name="left">
+                <h:form>
+                    <p:growl autoUpdate="true"/><br></br>
+                    <p:spacer></p:spacer>
+
+                    <p:panelMenu style="width:340px" >
+                        <p:submenu label="Meni" >
+                            <p:menuitem value="Pocetna strana" action="/administrator/linkovi.xhtml?faces-redirect=true" icon="ui-icon-back" />
+                            <p:menuitem value="Izloguj se" action="/naslovna/naslovnaStrana.xhtml?faces-redirect=true" icon="ui-icon-home" ajax="false"/>
+
+                        </p:submenu>
+
+
+                    </p:panelMenu>
+                </h:form>
+            </ui:define>
+
+
+
+            <ui:define name="content"> <div class="container">
+                    <div class="row">
+                        <h1><h:outputText value="Administrator"/></h1><hr/>
+
+
+
+
+
+
+                        <p:spacer height="35" />
+                        <h:form id="airplaneForm">
+                            <p:panel header="Dodaj novu avio-kompaniju">
+                                <p:messages autoUpdate="true"/>
+
+
+
+                                <h:panelGrid id="grid" columns="2" cellpadding="2">
+
+                                    <h:outputLabel for="airlineName" value="Naziv kompanije"/>
+                                    <p:inputText  value="#{Airline.name}" id="airlineName" label="airlineName" required="true" placeholder="Unesite naziv kompanije" requiredMessage="Obavezno je uneti naziv kompanije" validatorMessage="Naziv ima izmedju 2 i 35 karaktera" size="20" immediate="true" >
+                                        <f:validateLength minimum="2" maximum="35"/>
+                                        <f:ajax event="blur" render="airlineNameMessage" />
+                                    </p:inputText>
+                                    <h:message for="airlineName" style="color: crimson" id="airlineNameMessage"/>
+                                    <br/>
+
+
+                                    <h:outputLabel for="airlineAdresa" value="Adresa sedista"/>
+                                    <p:inputText  value="#{Airline.adresa}" id="airlineAdresa" label="airlineAdresa" required="true" placeholder="Unesite adresu kompanije" requiredMessage="Obavezno uneti adresu kompanije" validatorMessage="Naziv ima izmedju 2 i 35 karaktera" size="20" immediate="true" >
+                                        <f:validateLength minimum="2" maximum="35"/>
+                                        <f:ajax event="blur" render="airlineAdresaMessage"/>
+                                    </p:inputText>
+                                    <h:message for="airlineAdresa" style="color: crimson" id="airlineAdresaMessage"/>
+                                    <br/>
+
+
+
+
+                                    <h:outputLabel for="airlineCountry" value="Zemlja"/>
+                                    <p:inputText  value="#{Airline.zemlja}" id="airlineCountry" label="airlineCountry"  required="true" placeholder="Unesite zemlju kompanije" requiredMessage="Obavezno je uneti zemlju " validatorMessage="Naziv ima izmedju 3 i 35 karaktera" size="20" immediate="true" >
+                                        <f:validateLength minimum="3" maximum="35"/>
+                                        <f:ajax event="blur" render="airlineCountryMessage"/>
+                                    </p:inputText>
+                                    <h:message for="airlineCountry"  style="color: crimson" id="airlineCountryMessage"/>
+                                    <br/>
+
+                                    <h:outputLabel for="airlineEmail" value="E-mail"/>
+                                    <p:inputText value="#{Airline.email}" id="airlineEmail" label="userEmail" required="true" placeholder="example@gmail.com" requiredMessage="Obavezno je uneti e-mail" validatorMessage="Nije dobar format" size="20" immediate="true"  >
+                                        <f:validateRegex
+                                            pattern="^[_A-Za-z0-9-\+]+(\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\.[A-Za-z0-9]+)*(\.[A-Za-z]{2,})$" />
+                                        <f:ajax event="blur" render="airlineEmailMessage"/>
+                                    </p:inputText>
+                                    <h:message for="airlineEmail" style="color: crimson" id="airlineEmailMessage" />
+                                    <br/>
+
+                                    <h:outputLabel for="airlineSajt" value="Sajt"/>
+                                    <p:inputText value="#{Airline.sajt}" id="airlineSajt" label="userSajt" required="true" placeholder="www.google.com" requiredMessage="Obavezno je uneti web sajt" validatorMessage="Nije dobar format" size="20" immediate="true"  >
+                                        <f:validateRegex
+                                            pattern="^(http:\/\/|https:\/\/)?(www.)?([a-zA-Z0-9]+).[a-zA-Z0-9]*.[‌​a-z]{3}\.([a-z]+)?$" />
+                                        <f:ajax event="blur" render="airlineSajtMessage"/>
+                                    </p:inputText>
+                                    <h:message for="airlineSajt" style="color: crimson" id="airlineSajtMessage" />
+
+                                    <br/>
+
+
+
+                                </h:panelGrid>
+
+                                <p:spacer height="35" />
+                                <h:panelGrid columns="2">
+                                  <p:commandButton value="Dodaj" update="grid"  style="margin-right:10px" ajax="true" action="#{Airline.cadastrar}"   >
+                                    </p:commandButton>
+
+                                </h:panelGrid>
+
+
+
+                            </p:panel>
+                        </h:form>
+
+
+
+
+
+
+
+                    </div>
+                </div>
+            </ui:define>
+        </ui:composition>
+    </h:body>
+
+
+
+
+
+</html>
+

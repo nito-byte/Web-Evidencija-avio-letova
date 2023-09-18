@@ -1,0 +1,96 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+    </h:head>
+    <h:body role="document">
+        <ui:composition template="templateNaslovna.xhtml">
+
+            <ui:define name="top"></ui:define>
+
+            <ui:define name="naslov>">
+               <div class="row1">
+
+                <h1><h:outputText value="&nbsp;Dobrodosli!" styleClass="menu"/></h1><hr/>
+                </div>
+            </ui:define>
+
+
+            <ui:define name="content">
+
+
+
+
+
+                <h:form>
+                    <p:panelMenu style="width:300px" >
+                        <p:submenu label="Prijava" >
+                            <p:menuitem value="Prijavite se na sistem"  ajax="false" action="naslovna/prijava.xhtml?faces-redirect=true" icon="ui-icon-arrow-r"  />
+
+                        </p:submenu>
+
+
+                    </p:panelMenu>
+
+                    <p:panelMenu style="width:300px" >
+                        <p:submenu label="Registracija" >
+                            <p:menuitem value="Registrujte se na sistem" ajax="false" action="/naslovna/registracija.xhtml?faces-redirect=true" icon="ui-icon-arrow-r" />
+
+                        </p:submenu>
+
+
+                    </p:panelMenu>
+                    <p:panelMenu style="width:300px" >
+                        <p:submenu label="Lozinka" >
+                            <p:menuitem value="Promenite lozinku" ajax="false" action="/naslovna/promenaLozinke.xhtml?faces-redirect=true" icon="ui-icon-arrow-r" />
+
+                        </p:submenu>
+
+
+                    </p:panelMenu>
+
+
+
+                    <p:panelMenu style="width:300px" >
+                        <p:submenu label="Pretraga letova" >
+                            <p:menuitem value="Pretraga letova za neregistrovane korisnike" ajax="false" action="/gost/forma.xhtml?faces-redirect=true" icon="ui-icon-arrow-r" />
+
+                        </p:submenu>
+
+
+                    </p:panelMenu>
+
+
+
+
+                    <p:panelMenu style="width:300px" >
+                        <p:submenu label="Danasnji letovi" >
+                            <p:menuitem value="Tabela danasnjih letova" ajax="false" action="/naslovna/danasnjiLetovi.xhtml?faces-redirect=true" icon="ui-icon-arrow-r" />
+
+                        </p:submenu>
+
+
+                    </p:panelMenu>
+
+
+
+                </h:form> 
+
+
+
+
+
+
+
+
+
+            </ui:define>
+        </ui:composition>
+    </h:body>
+</html>
+
+

@@ -1,0 +1,63 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Sep 12, 2017 11:43:07 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="pojo.Flight" table="Flight" catalog="let1" optimistic-lock="version">
+        <id name="id" type="java.lang.Integer">
+            <column name="ID" />
+            <generator class="identity" />
+        </id>
+        <property name="brojLeta" type="string">
+            <column name="BrojLeta" length="45" unique="true" />
+        </property>
+        <property name="airportFrom" type="string">
+            <column name="AirportFrom" length="45" />
+        </property>
+        <property name="airportTo" type="string">
+            <column name="AirportTo" length="45" />
+        </property>
+        <property name="start" type="timestamp">
+            <column name="Start" length="19" />
+        </property>
+        <property name="time" type="time">
+            <column name="Time" length="8" />
+        </property>
+        <property name="airplane" type="string">
+            <column name="Airplane" length="45" />
+        </property>
+        <property name="planiranoVreme" type="timestamp">
+            <column name="PlaniranoVreme" length="19" />
+        </property>
+        <property name="ocekivanoVreme" type="timestamp">
+            <column name="OcekivanoVreme" length="19" />
+        </property>
+        <property name="vremeSletanja" type="timestamp">
+            <column name="VremeSletanja" length="19" />
+        </property>
+        <property name="grad1" type="string">
+            <column name="Grad1" length="45" />
+        </property>
+        <property name="status" type="string">
+            <column name="Status" length="45" />
+        </property>
+        <property name="avioKompanija" type="string">
+            <column name="AvioKompanija" length="45" />
+        </property>
+        <property name="grad2" type="string">
+            <column name="Grad2" length="45" />
+        </property>
+        <property name="izmena" type="string">
+            <column name="Izmena" length="45" />
+        </property>
+        <property name="carter" type="java.lang.Integer">
+            <column name="Carter" />
+        </property>
+        <property name="najblizi" type="string">
+            <column name="Najblizi" length="45" />
+        </property>
+        <property name="iznajmljeno" type="string">
+            <column name="Iznajmljeno" length="45" />
+        </property>
+    </class>
+</hibernate-mapping>
