@@ -1,0 +1,57 @@
+-- MySQL dump 10.13  Distrib 5.7.19, for Linux (x86_64)
+--
+-- Host: localhost    Database: let1
+-- ------------------------------------------------------
+-- Server version	5.7.19-0ubuntu0.16.04.1
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8 */;
+/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
+/*!40103 SET TIME_ZONE='+00:00' */;
+/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+
+--
+-- Table structure for table `Rezervacija`
+--
+
+DROP TABLE IF EXISTS `Rezervacija`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `Rezervacija` (
+  `ID` int(11) NOT NULL AUTO_INCREMENT,
+  `Ime` varchar(45) DEFAULT NULL,
+  `Prezime` varchar(45) DEFAULT NULL,
+  `Pasos` varchar(45) DEFAULT NULL,
+  `BrojLeta` varchar(45) DEFAULT NULL,
+  `Odakle` varchar(45) DEFAULT NULL,
+  `Dokle` varchar(45) DEFAULT NULL,
+  `IdCard` varchar(45) DEFAULT NULL,
+  PRIMARY KEY (`ID`)
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `Rezervacija`
+--
+
+LOCK TABLES `Rezervacija` WRITE;
+/*!40000 ALTER TABLE `Rezervacija` DISABLE KEYS */;
+INSERT INTO `Rezervacija` VALUES (1,'qqqqq','aaaaa','asdf','11223344','NikolaTesla','Nis',NULL),(2,'qqqqq','aaaaa','asdf','333333','Nis','Hitrou',NULL),(3,'tijana','mihajlovic','aaaaaaaaaaaaa','11223344','NikolaTesla','Nis','4121212121212'),(4,'tijana','mihajlovic','aaaaaaaaaaaaa','1122334','Nis','Hitrou','4121212121212'),(5,'olja','peric','dadfads','11223344','NikolaTesla','Nis','4121212121212'),(6,'olja','peric','dadfads','1122334','Nis','Hitrou','4121212121212'),(7,'olga','peric','dadfads','112233','NikolaTesla','Hitrou','4121212121212'),(8,'pera','peric','1234','let13','Aerodrom Beograd','Aerodrom Pariz','4121212121212'),(9,'pera','peric','1234','let14','Aerodrom Pariz','Aerodrom London','4121212121212'),(10,'pera','peric','1234','let13','Aerodrom Beograd','Aerodrom Pariz','4121212121212'),(11,'pekica','pekic','123123','let17','Aerodrom London','Aerdrom Njujork','4121212121212');
+/*!40000 ALTER TABLE `Rezervacija` ENABLE KEYS */;
+UNLOCK TABLES;
+/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
+
+/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
+/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
+/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
+
+-- Dump completed on 2017-09-13 17:37:15

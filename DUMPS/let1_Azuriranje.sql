@@ -1,0 +1,55 @@
+-- MySQL dump 10.13  Distrib 5.7.19, for Linux (x86_64)
+--
+-- Host: localhost    Database: let1
+-- ------------------------------------------------------
+-- Server version	5.7.19-0ubuntu0.16.04.1
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8 */;
+/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
+/*!40103 SET TIME_ZONE='+00:00' */;
+/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+
+--
+-- Table structure for table `Azuriranje`
+--
+
+DROP TABLE IF EXISTS `Azuriranje`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `Azuriranje` (
+  `ID` int(11) NOT NULL AUTO_INCREMENT,
+  `duzina` double DEFAULT NULL,
+  `brzina` double DEFAULT NULL,
+  `preostaloVreme` double DEFAULT NULL,
+  `brojLeta` varchar(45) DEFAULT NULL,
+  `Radar` varchar(45) DEFAULT NULL,
+  PRIMARY KEY (`ID`)
+) ENGINE=InnoDB AUTO_INCREMENT=30 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `Azuriranje`
+--
+
+LOCK TABLES `Azuriranje` WRITE;
+/*!40000 ALTER TABLE `Azuriranje` DISABLE KEYS */;
+INSERT INTO `Azuriranje` VALUES (1,15,2,7.5,'let5',NULL),(2,15,2,7.5,'let5',NULL),(3,12,2,6,NULL,NULL),(4,12,2,6,NULL,NULL),(5,12,2,6,NULL,NULL),(6,12,1,12,'let5',NULL),(7,12,2,6,'let5',NULL),(8,12,2,6,'let5',NULL),(9,12,2,6,'let5',NULL),(10,12,2,6,'let5',NULL),(11,12,2,6,'let5',NULL),(12,12,2,6,'let5',NULL),(13,12,2,6,'let5',NULL),(14,12,2,6,'let5',NULL),(15,12,2,6,'let5',NULL),(16,12,2,6,'let5',NULL),(17,12,2,6,'let5',NULL),(18,12,2,6,'let5',NULL),(19,12,2,6,'let5',NULL),(20,12,2,6,'let5',NULL),(21,12,2,6,'let5',NULL),(22,12,12,1,'let5',NULL),(23,12,12,1,'let5',NULL),(24,1,12,0.08333333333333333,'let5',NULL),(25,12,1,12,'let5',NULL),(26,12,1,12,'let5',NULL),(27,12,1,12,'let5',NULL),(28,12,1,12,'let5',NULL),(29,12,1,12,'let5',NULL);
+/*!40000 ALTER TABLE `Azuriranje` ENABLE KEYS */;
+UNLOCK TABLES;
+/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
+
+/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
+/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
+/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
+
+-- Dump completed on 2017-09-13 17:37:16
